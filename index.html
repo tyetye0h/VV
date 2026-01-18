@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+      max-width: 380px;
+      animation: pop 0.8s ease;
+    }
+
+    h1, h2 {
+      color: #ff4d8d;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .yes {
+      background: #ff4d8d;
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+    }
+
+    .no {
+      background: #f1f1f1;
+      color: #777;
+    }
+
+    .message {
+      display: none;
+      margin-top: 25px;
+      font-size: 16px;
+      color: #ff4d8d;
+    }
+
+    .cry {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      text-align: center;
+    }
+
+    .cry img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .hearts span {
+      position: absolute;
+      bottom: -20px;
+      font-size: 22px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey my love ❤️</h1>
+    <p>Every day with you feels special… so I gotta ask 😌</p>
+    <h2>Will you be my Valentine?</h2>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">Yes 💕</button>
+      <button class="no" onclick="sayNo()">No 🙄</button>
+    </div>
+
+    <div class="message" id="message">
+      <p><strong>My love ❤️</strong></p>
+      <p>
+        I just want you to know how much you truly mean to me. Every day I feel lucky to have you in my life. You make me smile in ways no one else can, you bring me peace, and you make my world brighter just by being you. I cherish every moment we spend together, every laugh, every conversation, and every memory we create. I’m grateful for your love, your patience, and your heart — and I promise to always appreciate you, care for you, and choose you. I’m so lucky to call you mine 💖
+      </p>
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+  <div class="cry" id="cry">
+    <img src="https://i.imgur.com/8QfQKQv.png" alt="Crying baby" />
+    <p>Wow… you really clicked no? 🥺</p>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('cry').style.display = 'none';
+      createHearts();
+    }
+
+    function sayNo() {
+      document.getElementById('cry').style.display = 'block';
+      document.getElementById('message').style.display = 'none';
+    }
+
+    function createHearts() {
+      const hearts = document.getElementById('hearts');
+      for (let i = 0; i < 35; i++) {
+        const heart = document.createElement('span');
+        heart.innerHTML = '💗';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        hearts.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
